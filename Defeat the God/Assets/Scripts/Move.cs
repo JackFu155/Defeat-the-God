@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -8,7 +9,8 @@ public class Move : MonoBehaviour
     private Vector3 velocity;
     private Vector3 prevVelocity;
     public float walkSpeed = 2f;
-    public float jumpPower = 10f;
+    //public float jumpPower = 10f;
+    private Vector3 position;
 
     private bool canJump = true;
 
@@ -16,6 +18,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         velocity = new Vector3(0f, 0f, 0f);
+        position = transform.position;
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class Move : MonoBehaviour
         //Left & Right
         if (Math.Abs(Input.GetAxis("Horizontal")) > .1f)
         {
-            velocity.x = Input.GetAxis("Horizontal");
+            velocity.x = Input.GetAxis("Horizontal") * walkSpeed;
         }
         else
         {
@@ -36,7 +39,7 @@ public class Move : MonoBehaviour
         //Forward and Backward
         if (Math.Abs(Input.GetAxis("Vertical")) > .1f)
         {
-            velocity.z = Input.GetAxis("Vertical");
+            velocity.z = Input.GetAxis("Vertical") * walkSpeed;
         }
         else
         {
@@ -50,13 +53,25 @@ public class Move : MonoBehaviour
         }
 
         //Jump
-        if (Input.GetAxis("Jump") > 0f && canJump)
+        /*if (Input.GetAxis("Jump") > 0f && canJump)
         {
             velocity.y = jumpPower;
             canJump = false;
         }
+        else
+        {
+            velocity.y = 0f;
+        }*/
+
+        //Set transform position
+        position += velocity * Time.deltaTime;
+        transform.position = position;
+
 
         //Set previous values for next Update()
         prevVelocity = velocity;
+        UnityEngine.Debug.Log(velocity.ToString());
+
+        //velocity.y = gameObject.getComponent<RigidBody>().velocity.y;
     }
 }
