@@ -967,6 +967,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
+  accelerateSpeed: 2
+  jumpPower: 10
+  maxFallSpeed: 10
 --- !u!54 &1793686475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -981,7 +984,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &1855416957
 GameObject:
@@ -1263,22 +1266,22 @@ PrefabInstance:
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.8536579
       objectReference: {fileID: 0}
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.52083427
       objectReference: {fileID: 0}
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
@@ -1293,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -117.22401
       objectReference: {fileID: 0}
     - target: {fileID: 3932690934974885165, guid: 201a5d57343734c4ab7e58969ada24aa,
         type: 3}
