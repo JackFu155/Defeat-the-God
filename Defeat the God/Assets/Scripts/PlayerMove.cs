@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
         //Movement based on Velocity
         if (Math.Abs(Input.GetAxis("Horizontal")) > .1f)
         {
-            acceleration.x = Input.GetAxis("Vertical") * accelerateSpeed;
+            acceleration.x = Input.GetAxis("Horizontal") * accelerateSpeed;
         }
         else if(Math.Abs(velocity.x) > 0)
         {
