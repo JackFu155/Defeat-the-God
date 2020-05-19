@@ -54,7 +54,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         //Perform a raycast to determine if there is anything in the way of the camera
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
+        if(Physics.Raycast(transform.position, Player.position - transform.position, out hit, 5.5f))
         {
             //If there is something in the way
             if(hit.collider.gameObject.tag != "Player")
