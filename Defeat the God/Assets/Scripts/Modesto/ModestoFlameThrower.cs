@@ -61,6 +61,7 @@ public class ModestoFlameThrower : MonoBehaviour
         ChargeTimeRemaining = ChargeTime;
         DurationRemaining = Duration;
         FlameDeltaRemaining = 0;
+        CoolDownRemaining = CoolDown;
 
         //Change status
         Status = FlameState.Charging;
