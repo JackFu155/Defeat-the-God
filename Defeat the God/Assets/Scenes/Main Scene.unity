@@ -1482,7 +1482,7 @@ MonoBehaviour:
   CoolDown: 4
   Duration: 4
   ChargeTime: 1
-  FlameDelta: 0.1
+  FlameDelta: 0.05
   FlamePrefab: {fileID: 2085821079660620577, guid: 59052fa3be22ceb4f83898ff8472be4b,
     type: 3}
   target: {fileID: 1028766548}
