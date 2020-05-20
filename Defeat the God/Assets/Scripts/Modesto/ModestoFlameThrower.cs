@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModestoFlameThrower : MonoBehaviour
 {
-    public enum FlameState { Ready = 0, Charging = 1, Channelling,  CoolDown = 3 }
+    public enum FlameState { Ready = 0, Charging = 1, Channelling, CoolDown = 3 }
     public FlameState Status;
     public float CoolDown;
     public float Duration;
@@ -32,7 +32,7 @@ public class ModestoFlameThrower : MonoBehaviour
         {
             //Waits for ability activation
             case FlameState.Ready:
-                if(Input.GetAxis("Ability 1") > 0)
+                if (Input.GetAxis("Ability 1") > 0)
                     CastAbility();
                 break;
 
@@ -43,10 +43,12 @@ public class ModestoFlameThrower : MonoBehaviour
 
             //Creates fire while channelling
             case FlameState.Channelling:
+                ChannelAbility();
                 break;
 
             //Handles Ability Cooldown
             case FlameState.CoolDown:
+                AbilityCoolDown();
                 break;
         }
     }
@@ -54,10 +56,11 @@ public class ModestoFlameThrower : MonoBehaviour
     //Sets/Preps defaults for casting ability
     void CastAbility()
     {
+        Debug.Log("Casting: ");
         //Set values to prep for casting
         ChargeTimeRemaining = ChargeTime;
         DurationRemaining = Duration;
-        FlameDeltaRemaining = FlameDelta;
+        FlameDeltaRemaining = 0;
 
         //Change status
         Status = FlameState.Charging;
@@ -72,6 +75,7 @@ public class ModestoFlameThrower : MonoBehaviour
         //wait for animation
         if (ChargeTimeRemaining > 0)
         {
+            Debug.Log("Charging: " + ChargeTimeRemaining);
             ChargeTimeRemaining -= Time.deltaTime;
         }
         else
@@ -85,8 +89,10 @@ public class ModestoFlameThrower : MonoBehaviour
     void ChannelAbility()
     {
         //Cast the ability unless canceled
-        if (ChargeTimeRemaining > 0 /*|| Input.GetAxis("Primary Fire") > 0*/)
+        if (DurationRemaining > 0 /*|| Input.GetAxis("Primary Fire") > 0*/)
         {
+            Debug.Log("Channelling: " + DurationRemaining);
+            //Spawn a new projectile every FlameDelta seconds
             if (FlameDeltaRemaining > 0)
             {
                 FlameDeltaRemaining -= Time.deltaTime;
@@ -96,13 +102,13 @@ public class ModestoFlameThrower : MonoBehaviour
                 CreateFlames();
                 FlameDeltaRemaining = FlameDelta;
             }
-            
-            ChargeTimeRemaining -= Time.deltaTime;
+
+            DurationRemaining -= Time.deltaTime;
         }
         else
         {
-            ChargeTimeRemaining = 0;
-            Status = FlameState.Channelling;
+            DurationRemaining = 0;
+            Status = FlameState.CoolDown;
         }
     }
 
@@ -112,6 +118,7 @@ public class ModestoFlameThrower : MonoBehaviour
         //wait for cooldown to finish
         if (CoolDownRemaining > 0)
         {
+            Debug.Log("CoolDown: " + CoolDownRemaining);
             CoolDownRemaining -= Time.deltaTime;
         }
         else
