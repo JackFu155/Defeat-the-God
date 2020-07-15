@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModestoFlameThrower : MonoBehaviour
 {
-    public enum CastState { Ready = 0, Charging = 1, Channelling = 2, CoolDown = 3 }
+    public enum CastState { Ready = 0, Charging = 1, Channeling = 2, CoolDown = 3 }
     public CastState Status;
     public float CoolDown;
     public float Duration;
@@ -41,8 +41,8 @@ public class ModestoFlameThrower : MonoBehaviour
                 ChargeAbility();
                 break;
 
-            //Creates fire while channelling
-            case CastState.Channelling:
+            //Creates fire while channeling
+            case CastState.Channeling:
                 ChannelAbility();
                 break;
 
@@ -82,15 +82,15 @@ public class ModestoFlameThrower : MonoBehaviour
         else
         {
             ChargeTimeRemaining = 0;
-            Status = CastState.Channelling;
+            Status = CastState.Channeling;
         }
     }
 
-    //Creates fire while channelling
+    //Creates fire while channeling
     void ChannelAbility()
     {
         //Cast the ability unless canceled
-        if (DurationRemaining > 0 /*|| Input.GetAxis("Primary Fire") > 0*/)
+        if (DurationRemaining > 0 && Input.GetAxis("Primary Fire") <= 0)
         {
             Debug.Log("Channelling: " + DurationRemaining);
             //Spawn a new projectile every FlameDelta seconds
