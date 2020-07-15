@@ -15,7 +15,6 @@ public class FlameThrowerProjectile : MonoBehaviour
     {
         TimeAlive = 0;
         OriginalSize = transform.localScale;
-        transform.localScale = new Vector3(0.001f * OriginalSize.x, 0.001f * OriginalSize.y, 1 * OriginalSize.z);
     }
 
     // Update is called once per frame
