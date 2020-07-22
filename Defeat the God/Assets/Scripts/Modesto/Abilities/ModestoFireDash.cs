@@ -94,7 +94,7 @@ public class ModestoFireDash : MonoBehaviour
         //While casting duration is available
         if (DurationRemaining > 0)
         {
-            if(FlameSpotDeltaRemaining > 0)
+            if (FlameSpotDeltaRemaining > 0)
             {
                 FlameSpotDeltaRemaining -= Time.deltaTime;
             }
@@ -117,7 +117,7 @@ public class ModestoFireDash : MonoBehaviour
     //Handles Ability Cooldown
     private void AbilityCoolDown()
     {
-        //wait for cooldown to finish
+        //Wait for cooldown to finish
         if (CoolDownRemaining > 0)
         {
             Debug.Log("CoolDown: " + CoolDownRemaining);
@@ -141,7 +141,7 @@ public class ModestoFireDash : MonoBehaviour
                 //Get current direction of player
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
-                DashDirection = new Vector3(x, 0f, z);
+                DashDirection = transform.right * x + transform.forward * z;
 
                 //Dash forward if player is not moving in a direction
                 if (DashDirection.magnitude == 0)

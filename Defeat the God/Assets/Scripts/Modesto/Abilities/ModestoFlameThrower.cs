@@ -67,7 +67,7 @@ public class ModestoFlameThrower : MonoBehaviour
         Status = CastState.Charging;
     }
 
-    //Handles Charging ability
+    //Handles Charging Ability
     void ChargeAbility()
     {
         //disable main attack
